@@ -1,0 +1,7 @@
+{
+  "aws_profile": "{{env `AWS_PROFILE`}}",
+  "region": "ap-northeast-1",
+  "vpc_id": "vpc-ab58a2cd",
+  "subnet_id": "subnet-a1cb1f2e",
+  "security_group_id": "sg-04cd33ad"
+}
