@@ -34,6 +34,10 @@
     {
       "type": "shell",
       "script": "./scripts/bootstrap.sh"
+    },
+    {
+      "type": "shell",
+      "script": "./scripts/setup-cloudwatch-agent.sh"
     }
   ]
 }
