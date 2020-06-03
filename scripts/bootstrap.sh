@@ -10,22 +10,13 @@ sudo apt-get update -qq
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
     apt-transport-https ca-certificates curl
 
-
 # setup docker repository
-if [ "$(lsb_release -sc)" = "bionic" ]; then
-  curl -fsSL "https://download.docker.com/linux/ubuntu/gpg" | sudo apt-key add -qq -
-  echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release --codename | cut -f2) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-fi
-
-# FIXME: Ubuntu Server 20.04 LTS currently doesn't provide official package repository
-DOCKER_PACKAGE_NAME="docker.io"
-if [ "$(lsb_release -sc)" != "focal" ]; then
-  DOCKER_PACKAGE_NAME="docker-ce"
-fi
+curl -fsSL "https://download.docker.com/linux/ubuntu/gpg" | sudo apt-key add -qq -
+echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release --codename | cut -f2) stable" | sudo tee /etc/apt/sources.list.d/docker.list
 
 # setup docker daemon
 sudo apt-get update -qq >/dev/null
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends ${DOCKER_PACKAGE_NAME}
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends docker-ce
 
 # allow user "ubuntu" to execute "docker" without "sudo"
 sudo usermod -aG docker ubuntu
