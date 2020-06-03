@@ -7,7 +7,7 @@ set -o pipefail
 
 # install cloudwatch agent
 CLOUDWATCH_AGENT_DEB_LINK="https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb"
-wget -O amazon-cloudwatch-agent.deb "${CLOUDWATCH_AGENT_DEB_LINK}"
+wget -q -O amazon-cloudwatch-agent.deb "${CLOUDWATCH_AGENT_DEB_LINK}"
 sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
 rm -vf ./amazon-cloudwatch-agent.deb
 
