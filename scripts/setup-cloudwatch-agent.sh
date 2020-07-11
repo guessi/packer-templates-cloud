@@ -14,40 +14,53 @@ rm -vf ./amazon-cloudwatch-agent.deb
 # generate cloudwatch agent config
 cat > cloudwatch-agent-config.json <<-EOF
 {
-	"agent": {
-		"metrics_collection_interval": 60,
-		"run_as_user": "root"
-	},
-	"metrics": {
-		"append_dimensions": {
-			"AutoScalingGroupName": "\${aws:AutoScalingGroupName}",
-			"ImageId": "\${aws:ImageId}",
-			"InstanceId": "\${aws:InstanceId}",
-			"InstanceType": "\${aws:InstanceType}"
-		},
-		"metrics_collected": {
-			"disk": {
-				"measurement": [
-					"used_percent"
-				],
-				"metrics_collection_interval": 60,
-				"resources": [
-					"*"
-				]
-			},
-			"mem": {
-				"measurement": [
-					"mem_used_percent"
-				],
-				"metrics_collection_interval": 60
-			},
-			"statsd": {
-				"metrics_aggregation_interval": 60,
-				"metrics_collection_interval": 10,
-				"service_address": ":8125"
-			}
-		}
-	}
+    "agent": {
+        "metrics_collection_interval": 60,
+        "run_as_user": "root"
+    },
+    "metrics": {
+        "append_dimensions": {
+            "AutoScalingGroupName": "\${aws:AutoScalingGroupName}",
+            "InstanceId": "\${aws:InstanceId}",
+            "InstanceType": "\${aws:InstanceType}"
+        },
+        "metrics_collected": {
+            "disk": {
+                "measurement": [
+                    "used_percent"
+                ],
+                "resources": [
+                    "/"
+                ]
+            },
+            "diskio": {
+                "measurement": [
+                    "reads",
+                    "writes",
+                    "read_bytes",
+                    "write_bytes"
+                ],
+                "resources": [
+                    "/"
+                ]
+            },
+            "swap": {
+                "measurement": [
+                    "swap_used",
+                    "swap_free",
+                    "swap_used_percent"
+                ]
+            },
+            "mem": {
+                "measurement": [
+                    "used_percent",
+                    "available_percent",
+                    "buffered",
+                    "cached"
+                ]
+            }
+        }
+    }
 }
 EOF
 
