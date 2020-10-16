@@ -8,7 +8,7 @@ set -o pipefail
 # basic requirements
 sudo apt-get update -qq
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    apt-transport-https ca-certificates curl
+    apt-transport-https ca-certificates curl gnupg
 
 # setup docker repository
 curl -fsSL "https://download.docker.com/linux/ubuntu/gpg" | sudo apt-key add -qq -
@@ -42,7 +42,6 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     fail2ban \
     git \
-    gnupg \
     iftop \
     jq \
     openssh-client \
