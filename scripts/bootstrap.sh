@@ -47,6 +47,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     openssh-client \
     openssh-server \
     tcpdump \
+    tree \
     vim \
     wget
 
