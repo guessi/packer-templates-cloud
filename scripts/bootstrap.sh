@@ -5,6 +5,8 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+UBUNTU_CODE_NAME="$(awk -F'=' '/UBUNTU_CODENAME/{print$2}' /etc/os-release)"
+
 # basic requirements
 sudo apt-get update -qq
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -12,11 +14,17 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 # setup docker repository
 curl -fsSL "https://download.docker.com/linux/ubuntu/gpg" | sudo apt-key add -qq -
-echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(awk -F'=' '/UBUNTU_CODENAME/{print$2}' /etc/os-release) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu ${UBUNTU_CODE_NAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list
 
 # setup docker daemon
+# HINT: pinned docker-ce version to avoid breaking changes
 sudo apt-get update -qq >/dev/null
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends docker-ce
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+    docker-ce="5:19.03.14~3-0~ubuntu-${UBUNTU_CODE_NAME}" \
+    docker-ce-cli="5:19.03.14~3-0~ubuntu-${UBUNTU_CODE_NAME}" \
+    containerd.io="1.3.9-1"
+
+sudo apt-mark hold docker-ce docker-ce-cli containerd.io
 
 # allow user "ubuntu" to execute "docker" without "sudo"
 sudo usermod -aG docker ubuntu
