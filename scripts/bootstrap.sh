@@ -12,7 +12,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 # setup docker repository
 curl -fsSL "https://download.docker.com/linux/ubuntu/gpg" | sudo apt-key add -qq -
-echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release --codename | cut -f2) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(awk -F'=' '/UBUNTU_CODENAME/{print$2}' /etc/os-release) stable" | sudo tee /etc/apt/sources.list.d/docker.list
 
 # setup docker daemon
 sudo apt-get update -qq >/dev/null
