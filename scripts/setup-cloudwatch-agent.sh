@@ -35,8 +35,6 @@ cat > cloudwatch-agent-config.json <<-EOF
             },
             "diskio": {
                 "measurement": [
-                    "reads",
-                    "writes",
                     "read_bytes",
                     "write_bytes"
                 ],
@@ -46,17 +44,12 @@ cat > cloudwatch-agent-config.json <<-EOF
             },
             "swap": {
                 "measurement": [
-                    "swap_used",
-                    "swap_free",
                     "swap_used_percent"
                 ]
             },
             "mem": {
                 "measurement": [
-                    "used_percent",
-                    "available_percent",
-                    "buffered",
-                    "cached"
+                    "used_percent"
                 ]
             }
         }
