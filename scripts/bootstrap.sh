@@ -18,13 +18,18 @@ echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/
 
 # setup docker daemon
 # HINT: pinned docker-ce version to avoid breaking changes
+PKG_VERSION_DOCKER="5:19.03.14~3-0~ubuntu"
+PKG_VERSION_CONTAINERD="1.4.3-1"
+
 sudo apt-get update -qq >/dev/null
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
-    docker-ce="5:19.03.14~3-0~ubuntu-${UBUNTU_CODE_NAME}" \
-    docker-ce-cli="5:19.03.14~3-0~ubuntu-${UBUNTU_CODE_NAME}" \
-    containerd.io="1.3.9-1"
+    docker-ce="${PKG_VERSION_DOCKER}-${UBUNTU_CODE_NAME}" \
+    docker-ce-cli="${PKG_VERSION_DOCKER}-${UBUNTU_CODE_NAME}" \
+    containerd.io="${PKG_VERSION_CONTAINERD}"
 
-sudo apt-mark hold docker-ce docker-ce-cli containerd.io
+sudo apt-mark hold docker-ce
+sudo apt-mark hold docker-ce-cli
+sudo apt-mark hold containerd.io
 
 # allow user "ubuntu" to execute "docker" without "sudo"
 sudo usermod -aG docker ubuntu
