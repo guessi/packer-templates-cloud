@@ -19,7 +19,7 @@ echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/
 # setup docker daemon
 # HINT: pinned docker-ce version to avoid breaking changes
 PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu"
-PKG_VERSION_CONTAINERD="1.4.12-1"
+PKG_VERSION_CONTAINERD="1.4.13-1"
 
 sudo apt-get update -qq >/dev/null
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
