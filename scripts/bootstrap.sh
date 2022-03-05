@@ -8,8 +8,8 @@ set -o pipefail
 UBUNTU_CODE_NAME="$(awk -F'=' '/UBUNTU_CODENAME/{print$2}' /etc/os-release)"
 
 # basic requirements
-sudo apt-get update -qq
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+sudo apt update
+sudo DEBIAN_FRONTEND=noninteractive apt install -y \
     apt-transport-https ca-certificates curl gnupg
 
 # setup docker repository
@@ -21,8 +21,13 @@ echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/
 PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu"
 PKG_VERSION_CONTAINERD="1.4.13-1"
 
-sudo apt-get update -qq >/dev/null
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+# HINT: latest containerd.io for Ubuntu 16.04
+if [ "${UBUNTU_CODE_NAME}" = "xenial" ]; then
+  PKG_VERSION_CONTAINERD="1.4.6-1"
+fi
+
+sudo apt update
+sudo DEBIAN_FRONTEND=noninteractive apt install -y -qq --no-install-recommends \
     docker-ce="${PKG_VERSION_DOCKER}-${UBUNTU_CODE_NAME}" \
     docker-ce-cli="${PKG_VERSION_DOCKER}-${UBUNTU_CODE_NAME}" \
     containerd.io="${PKG_VERSION_CONTAINERD}"
@@ -49,10 +54,10 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # ensure system packages are up to date
-sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
+sudo DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
 
 # common packages
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+sudo DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
     fail2ban \
     git \
     iftop \

@@ -1,21 +1,21 @@
 {
   "builders": [
     {
-      "ami_name": "ubuntu-server-bionic-{{isotime \"2006-01-02\"}}-{{timestamp}}",
-      "ami_description": "ubuntu-server-bionic-with-minimum-requirements",
+      "ami_name": "ubuntu-server-{{user `ubuntu_codename`}}-{{isotime \"2006-01-02\"}}-{{timestamp}}",
+      "ami_description": "ubuntu-server-{{user `ubuntu_codename`}}-with-minimum-requirements",
       "ami_virtualization_type": "hvm",
-      "instance_type": "t3.nano",
+      "instance_type": "{{user `instance_type`}}",
       "profile": "{{user `aws_profile`}}",
       "region": "{{user `region`}}",
       "vpc_id": "{{user `vpc_id`}}",
       "subnet_id": "{{user `subnet_id`}}",
       "security_group_id": "{{user `security_group_id`}}",
       "ssh_interface": "public_ip",
-      "ssh_username": "ubuntu",
+      "ssh_username": "{{user `ssh_username`}}",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
-          "name": "ubuntu/images/*ubuntu-bionic-18.04-amd64-server-*",
+          "name": "ubuntu/images/*ubuntu-{{user `ubuntu_codename`}}-{{user `ubuntu_version`}}-amd64-server-*",
           "root-device-type": "ebs"
         },
         "owners": ["099720109477"],
@@ -23,8 +23,8 @@
       },
       "tags": {
         "Created": "{{isotime \"2006-01-02\"}}-{{timestamp}}",
-        "Name": "ubuntu-server-bionic-{{isotime \"2006-01-02\"}}-{{timestamp}}",
-        "OS": "Ubuntu Server 18.04 (Bionic Beaver)",
+        "Name": "ubuntu-server-{{user `ubuntu_codename`}}-{{isotime \"2006-01-02\"}}-{{timestamp}}",
+        "OS": "Ubuntu Server {{user `ubuntu_version`}} ({{user `ubuntu_codename_full`}})",
         "Packer": "true"
       },
       "type": "amazon-ebs"

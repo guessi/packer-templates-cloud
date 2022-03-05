@@ -2,30 +2,30 @@
 
 ## Prerequisite
 
-- AWS client profile with proper IAM policies attached
+- AWS CLI with required permissions
 
 ## Supported Operation Systems
 
-- Ubuntu Server 16.04 LTS
-- Ubuntu Server 18.04 LTS
-- Ubuntu Server 20.04 LTS
+- Ubuntu Server LTS (16.04 ~ 20.04)
 
 ## Usage
 
-### Build Amazon Machine Image (AMI)
+Update required changes
 
-```bash
-cp variables/example.json \
-   variables/myprofile.json
+    $ vim variables/aws-vars-20.04.json
 
-vim variables/myprofile.json
+Setup AWS_PROFILE
 
-AWS_PROFILE=myprofile packer build -var-file variables/myprofile.json templates/aws/ubuntu-server-16-04.json
-AWS_PROFILE=myprofile packer build -var-file variables/myprofile.json templates/aws/ubuntu-server-18-04.json
-AWS_PROFILE=myprofile packer build -var-file variables/myprofile.json templates/aws/ubuntu-server-20-04.json
-```
+    $ export AWS_PROFILE=my_aws_profile
+
+Build AMI
+
+    $ packer build -var-file variables/aws-vars-20.04.json templates/aws_ubuntu-server-lts.json
 
 ## FAQ
 
 - [Amazon Builder FAQ](https://www.packer.io/docs/builders/amazon/#troubleshooting)
 
+## License
+
+- [LICENSE](https://github.com/guessi/packer-templates-cloud/blob/master/LICENSE)
