@@ -1,5 +1,2 @@
 ariables/*
 !variables/aws-vars-*.json
-
-# temporary exclude *.pkr.hcl
-*.pkr.hcl

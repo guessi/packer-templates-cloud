@@ -1,8 +1,8 @@
 {
   "builders": [
     {
-      "ami_name": "ubuntu-server-{{user `ubuntu_codename`}}-{{isotime \"2006-01-02\"}}-{{timestamp}}",
-      "ami_description": "ubuntu-server-{{user `ubuntu_codename`}}-with-minimum-requirements",
+      "ami_name": "ubuntu-server-{{user `ubuntu_codename`}}-{{timestamp}}",
+      "ami_description": "ubuntu-server-{{user `ubuntu_codename`}}",
       "ami_virtualization_type": "hvm",
       "instance_type": "{{user `instance_type`}}",
       "profile": "{{user `aws_profile`}}",
@@ -22,9 +22,9 @@
         "most_recent": true
       },
       "tags": {
-        "Created": "{{isotime \"2006-01-02\"}}-{{timestamp}}",
-        "Name": "ubuntu-server-{{user `ubuntu_codename`}}-{{isotime \"2006-01-02\"}}-{{timestamp}}",
-        "OS": "Ubuntu Server {{user `ubuntu_version`}} ({{user `ubuntu_codename_full`}})",
+        "Created": "{{timestamp}}",
+        "Name": "ubuntu-server-{{user `ubuntu_codename`}}-{{timestamp}}",
+        "OS": "Ubuntu Server {{user `ubuntu_version`}} LTS ({{user `ubuntu_codename_full`}})",
         "Packer": "true"
       },
       "type": "amazon-ebs"
