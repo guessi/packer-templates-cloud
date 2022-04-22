@@ -2,7 +2,7 @@
 
 UBUNTU_VERSION=$1
 
-if [ ! -f "variables/vars-${UBUNTU_VERSION}.json" ]; then
+if [ ! -f "vars/vars-${UBUNTU_VERSION}.json" ]; then
   echo "abort, target variable file not exit."
   exit 1
 fi
