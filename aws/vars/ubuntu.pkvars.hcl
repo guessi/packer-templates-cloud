@@ -10,10 +10,12 @@ ubuntu_version = {
   "16.04" = "16.04"
   "18.04" = "18.04"
   "20.04" = "20.04"
+  "22.04" = "22.04"
 }
 
 ubuntu_codename = {
   "16.04" = "Xenial Xerus"
   "18.04" = "Bionic Beaver"
   "20.04" = "Focal Fossa"
+  "22.04" = "Jammy Jellyfish"
 }

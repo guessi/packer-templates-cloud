@@ -12,6 +12,7 @@
       "security_group_id": "{{user `security_group_id`}}",
       "ssh_interface": "public_ip",
       "ssh_username": "{{user `ssh_username`}}",
+      "temporary_key_pair_type": "ed25519",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",

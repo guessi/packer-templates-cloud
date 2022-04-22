@@ -18,18 +18,38 @@ echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/
 
 # setup docker daemon
 # HINT: pinned docker-ce version to avoid breaking changes
-PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu"
-PKG_VERSION_CONTAINERD="1.4.13-1"
 
-# HINT: latest containerd.io for Ubuntu 16.04
-if [ "${UBUNTU_CODE_NAME}" = "xenial" ]; then
-  PKG_VERSION_CONTAINERD="1.4.6-1"
-fi
+case ${UBUNTU_CODE_NAME} in
+  "jammy")
+    PKG_VERSION_DOCKER="5:20.10.14~3-0~ubuntu-jammy"
+    PKG_VERSION_CONTAINERD="1.5.11-1"
+    ;;
+
+  "focal")
+    PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-focal"
+    PKG_VERSION_CONTAINERD="1.5.11-1"
+    ;;
+
+  "bionic")
+    PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-bionic"
+    PKG_VERSION_CONTAINERD="1.5.11-1"
+    ;;
+
+  "xenial")
+    PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-xenial"
+    PKG_VERSION_CONTAINERD="1.4.6-1" # HINT: latest version for Ubuntu 16.04
+    ;;
+
+  *)
+    PKG_VERSION_DOCKER=
+    PKG_VERSION_CONTAINERD=
+    ;;
+esac
 
 sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y -qq --no-install-recommends \
-    docker-ce="${PKG_VERSION_DOCKER}-${UBUNTU_CODE_NAME}" \
-    docker-ce-cli="${PKG_VERSION_DOCKER}-${UBUNTU_CODE_NAME}" \
+    docker-ce="${PKG_VERSION_DOCKER}" \
+    docker-ce-cli="${PKG_VERSION_DOCKER}" \
     containerd.io="${PKG_VERSION_CONTAINERD}"
 
 sudo apt-mark hold docker-ce

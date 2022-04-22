@@ -7,9 +7,9 @@
 
 ## Supported Operation Systems
 
-- Ubuntu Server LTS (16.04 ~ 20.04)
+- Ubuntu Server LTS (16.04 ~ 22.04)
 
-## Usage (required packer v1.7.0+)
+## Usage (required packer v1.8.0+)
 
     $ export AWS_PROFILE=my_aws_profile
 
@@ -22,8 +22,8 @@
     $ export AWS_PROFILE=my_aws_profile
 
     $ cd aws/legacy
-    $ vim vars/vars-20.04.json
-    $ ./build.sh 20.04 # can only build image one by one
+    $ vim vars/vars-[16.04|18.04|20.04|22.04].json
+    $ ./build.sh [16.04|18.04|20.04|22.04] # can only build image one by one
 
 ## FAQ
 
