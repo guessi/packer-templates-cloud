@@ -21,21 +21,24 @@ echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/
 
 case ${UBUNTU_CODE_NAME} in
   "jammy")
-    PKG_VERSION_DOCKER="5:20.10.14~3-0~ubuntu-jammy"
-    PKG_VERSION_CONTAINERD="1.5.11-1"
+    PKG_VERSION_DOCKER="5:20.10.17~3-0~ubuntu-jammy"
+    PKG_VERSION_CONTAINERD="1.6.6-1"
     ;;
 
   "focal")
+    # PKG_VERSION_DOCKER="5:20.10.17~3-0~ubuntu-focal"
     PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-focal"
-    PKG_VERSION_CONTAINERD="1.5.11-1"
+    PKG_VERSION_CONTAINERD="1.6.6-1"
     ;;
 
   "bionic")
+    # PKG_VERSION_DOCKER="5:20.10.17~3-0~ubuntu-bionic"
     PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-bionic"
-    PKG_VERSION_CONTAINERD="1.5.11-1"
+    PKG_VERSION_CONTAINERD="1.6.6-1"
     ;;
 
   "xenial")
+    # PKG_VERSION_DOKCER="5:20.10.7~3-0~ubuntu-xenial"
     PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-xenial"
     PKG_VERSION_CONTAINERD="1.4.6-1" # HINT: latest version for Ubuntu 16.04
     ;;
