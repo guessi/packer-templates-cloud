@@ -21,14 +21,13 @@ echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/
 
 case ${UBUNTU_CODE_NAME} in
   "jammy")
-    PKG_VERSION_DOCKER="5:20.10.17~3-0~ubuntu-jammy"
-    PKG_VERSION_CONTAINERD="1.6.6-1"
+    PKG_VERSION_DOCKER="5:24.0.7-1~ubuntu.22.04~jammy"
+    PKG_VERSION_CONTAINERD="1.6.26-1"
     ;;
 
   "focal")
-    # PKG_VERSION_DOCKER="5:20.10.17~3-0~ubuntu-focal"
-    PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-focal"
-    PKG_VERSION_CONTAINERD="1.6.6-1"
+    PKG_VERSION_DOCKER="5:20.10.9~3-0~ubuntu-focal"
+    PKG_VERSION_CONTAINERD="1.6.26-1"
     ;;
 
   *)
