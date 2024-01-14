@@ -71,7 +71,7 @@ variable "security_group_id" {
 variable "ubuntu_version" {
   type = map(string)
   default = {
-    "20.04" = "20.04"
+    "22.04" = "22.04"
   }
   # validation => how to validate map(string) ...?
 }
@@ -79,7 +79,7 @@ variable "ubuntu_version" {
 variable "ubuntu_codename" {
   type = map(string)
   default = {
-    "20.04" = "Focal Fossa"
+    "22.04" = "Jammy Jellyfish"
   }
   # validation => how to validate map(string) ...?
 }
