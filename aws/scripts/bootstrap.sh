@@ -31,18 +31,6 @@ case ${UBUNTU_CODE_NAME} in
     PKG_VERSION_CONTAINERD="1.6.6-1"
     ;;
 
-  "bionic")
-    # PKG_VERSION_DOCKER="5:20.10.17~3-0~ubuntu-bionic"
-    PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-bionic"
-    PKG_VERSION_CONTAINERD="1.6.6-1"
-    ;;
-
-  "xenial")
-    # PKG_VERSION_DOKCER="5:20.10.7~3-0~ubuntu-xenial"
-    PKG_VERSION_DOCKER="5:19.03.15~3-0~ubuntu-xenial"
-    PKG_VERSION_CONTAINERD="1.4.6-1" # HINT: latest version for Ubuntu 16.04
-    ;;
-
   *)
     PKG_VERSION_DOCKER=
     PKG_VERSION_CONTAINERD=

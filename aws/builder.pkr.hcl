@@ -1,7 +1,5 @@
 build {
   sources = [
-    "source.amazon-ebs.xenial",
-    "source.amazon-ebs.bionic",
     "source.amazon-ebs.focal",
     "source.amazon-ebs.jammy",
   ]
