@@ -17,14 +17,6 @@
     $ vim vars/ubuntu.pkvars.hcl # build images with single config file
     $ ./build.sh # build images parallelly
 
-## Usage (Legacy)
-
-    $ export AWS_PROFILE=my_aws_profile
-
-    $ cd aws/legacy
-    $ vim vars/vars-[20.04|22.04].json
-    $ ./build.sh [20.04|22.04] # can only build image one by one
-
 ## FAQ
 
 - [Amazon Builder FAQ](https://www.packer.io/plugins/builders/amazon#troubleshooting)
