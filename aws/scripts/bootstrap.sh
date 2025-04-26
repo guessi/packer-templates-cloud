@@ -25,11 +25,6 @@ case ${UBUNTU_CODE_NAME} in
     PKG_VERSION_CONTAINERD="1.6.26-1"
     ;;
 
-  "focal")
-    PKG_VERSION_DOCKER="5:20.10.9~3-0~ubuntu-focal"
-    PKG_VERSION_CONTAINERD="1.6.26-1"
-    ;;
-
   *)
     PKG_VERSION_DOCKER=
     PKG_VERSION_CONTAINERD=

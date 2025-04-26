@@ -7,7 +7,7 @@
 
 ## Supported Operation Systems
 
-- Ubuntu Server LTS (20.04 ~ 22.04)
+- Ubuntu Server LTS (22.04)
 
 ## Usage (required packer v1.10.0+)
 

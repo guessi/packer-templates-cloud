@@ -1,6 +1,5 @@
 build {
   sources = [
-    "source.amazon-ebs.focal",
     "source.amazon-ebs.jammy",
   ]
 
