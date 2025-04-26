@@ -1,6 +1,7 @@
 build {
   sources = [
-    "source.amazon-ebs.jammy",
+    "source.amazon-ebs.jammy", // 22.04
+    "source.amazon-ebs.noble", // 24.04
   ]
 
   provisioner "shell" {
