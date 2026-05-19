@@ -23,4 +23,4 @@
 
 ## License
 
-- [LICENSE](https://github.com/guessi/packer-templates-cloud/blob/master/LICENSE)
+- [LICENSE](LICENSE)
